@@ -11,7 +11,7 @@ OBJS = $(SRCS:.c=.o)
 
 # Compiler and Flags
 CC = gcc
-CFLAGS = -Wall -std=c99 -I$(INC_DIR)
+CFLAGS = -Wall -std=c99 -I$(INC_DIR) -MMD -MP
 
 # Detect Operating System and set platform-specific flags
 ifeq ($(OS),Windows_NT)

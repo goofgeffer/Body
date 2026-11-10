@@ -1,11 +1,5 @@
 #include "raylib.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-
-#define RAYGUI_IMPLEMENTATION
-#include "raygui.h"
-
 int main(void) {
     const int screenWidth = 800;
     const int screenHeight = 600;
@@ -59,7 +53,8 @@ int main(void) {
         
         EndDrawing();
     }
-
+    UnloadTexture(texture);
+    
     CloseWindow();
     return 0;
 }
