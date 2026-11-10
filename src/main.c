@@ -8,13 +8,21 @@
 
 int main(void) {
     const int screenWidth = 800;
-    const int screenHeight = 450;
+    const int screenHeight = 600;
 
     InitWindow(screenWidth, screenHeight, "BODY");
+
+    Image robot_character = LoadImage("assets/robot.png");
+
+    // Note: Textures must be loaded after window is initialized
+    Texture2D texture = LoadTextureFromImage(robot_character);
+
+    UnloadImage(robot_character); // Don't need robot_character anymore
 
     Vector2 characterPosition = { (float)screenWidth / 2, (float)screenHeight / 2 };
 
     SetTargetFPS(60);
+
     HideCursor(); // Hide the cursor by default
 
     while (!WindowShouldClose()) {
@@ -26,30 +34,32 @@ int main(void) {
             }
         }
 
-        if (IsKeyDown(KEY_RIGHT)) {
+        if (IsKeyDown(KEY_RIGHT) || IsKeyDown(KEY_D)) {
             characterPosition.x += 2.0f;
         }
 
-        if (IsKeyDown(KEY_LEFT)) {
+        if (IsKeyDown(KEY_LEFT) || IsKeyDown(KEY_A)) {
             characterPosition.x -= 2.0f;
         }
 
-        if (IsKeyDown(KEY_UP)) {
+        if (IsKeyDown(KEY_UP) || IsKeyDown(KEY_W)) {
             characterPosition.y -= 2.0f;
         }
 
-        if (IsKeyDown(KEY_DOWN)) {
+        if (IsKeyDown(KEY_DOWN) || IsKeyDown(KEY_S)) {
             characterPosition.y += 2.0f;
         }
 
         BeginDrawing();
             ClearBackground(RAYWHITE);
 
-            DrawText("Life is only limited.", 50, 200, 20, LIGHTGRAY);
+            DrawText("Little Body Test", 50, 200, 20, LIGHTGRAY);
 
-            DrawCircleV(characterPosition, 25, GREEN);
+            DrawTextureV(texture, characterPosition, WHITE);
         
         EndDrawing();
     }
+
+    CloseWindow();
     return 0;
 }
