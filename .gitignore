@@ -11,6 +11,7 @@ src/*.o
 .DS_Store
 Thumbs.db
 *.a
+libraylib.a
 
 # IDE / Editor Settings
 .vscode/
