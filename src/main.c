@@ -15,8 +15,17 @@ int main(void) {
     Vector2 ballPosition = { (float)screenWidth / 2, (float)screenHeight / 2 };
 
     SetTargetFPS(60);
-
+    HideCursor(); // Hide the cursor by default
+    
     while (!WindowShouldClose()) {
+        if (IsKeyPressed(KEY_H)) {
+            if (IsCursorHidden()) {
+                ShowCursor();
+            } else {
+                HideCursor();
+            }
+        }
+
         if (IsKeyDown(KEY_RIGHT)) {
             ballPosition.x += 2.0f;
         }
