@@ -12,11 +12,11 @@ int main(void) {
 
     InitWindow(screenWidth, screenHeight, "BODY");
 
-    Vector2 ballPosition = { (float)screenWidth / 2, (float)screenHeight / 2 };
+    Vector2 characterPosition = { (float)screenWidth / 2, (float)screenHeight / 2 };
 
     SetTargetFPS(60);
     HideCursor(); // Hide the cursor by default
-    
+
     while (!WindowShouldClose()) {
         if (IsKeyPressed(KEY_H)) {
             if (IsCursorHidden()) {
@@ -27,19 +27,19 @@ int main(void) {
         }
 
         if (IsKeyDown(KEY_RIGHT)) {
-            ballPosition.x += 2.0f;
+            characterPosition.x += 2.0f;
         }
 
         if (IsKeyDown(KEY_LEFT)) {
-            ballPosition.x -= 2.0f;
+            characterPosition.x -= 2.0f;
         }
 
         if (IsKeyDown(KEY_UP)) {
-            ballPosition.y -= 2.0f;
+            characterPosition.y -= 2.0f;
         }
 
         if (IsKeyDown(KEY_DOWN)) {
-            ballPosition.y += 2.0f;
+            characterPosition.y += 2.0f;
         }
 
         BeginDrawing();
@@ -47,7 +47,7 @@ int main(void) {
 
             DrawText("Life is only limited.", 50, 200, 20, LIGHTGRAY);
 
-            DrawCircleV(ballPosition, 25, MAROON);
+            DrawCircleV(characterPosition, 25, GREEN);
         
         EndDrawing();
     }
